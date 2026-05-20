@@ -460,3 +460,17 @@ function timerStr(sec) {
 function initSidebar() {
   // Mock native: no sidebar needed since bottom nav handles navigation perfectly
 }
+// Fungsi khusus untuk mengirim data ke tabel profiles Supabase
+async function simpanKeSupabase(namaData, emailData) {
+    const { data, error } = await supabaseClient
+        .from('profiles')
+        .insert([
+            { nama: namaData, email: emailData }
+        ]);
+
+    if (error) {
+        console.error('Gagal menyimpan ke Supabase:', error.message);
+    } else {
+        console.log('Berhasil! Data masuk ke Supabase:', data);
+    }
+}
