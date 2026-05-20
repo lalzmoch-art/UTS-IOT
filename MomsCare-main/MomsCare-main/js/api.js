@@ -11,6 +11,8 @@ function initMockStore() {
       { id_user: 2, nama: "Admin MomCare", email: "admin@momcare.com", password: "adminpassword", tanggal_melahirkan: "2000-01-01", role: "admin" }
     ];
     localStorage.setItem('momcare_users', JSON.stringify(defaultUsers));
+    // Mengirim data Ibu Sehat ke Supabase secara otomatis saat web pertama dibuka
+simpanKeSupabase("Ibu Sehat", "ibu@email.com");
   }
 
   // Pre-populate Health Conditions
