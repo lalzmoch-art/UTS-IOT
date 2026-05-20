@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomCare – Pemantauan Istirahat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="phone-frame">
+    <!-- Header (Screen 6/7 style) -->
+    <header class="app-header">
+      <button class="header-back-btn" onclick="window.location.href='dashboard.html'">&lt;</button>
+      <span class="header-title-text" id="headerTitle">Istirahat</span>
+      <button class="header-icon-btn" onclick="window.location.href='profil.html'">👤</button>
+    </header>
+
+    <!-- Tab switcher (Combine Screen 6 & Screen 7) -->
+    <div style="padding: 0 20px; margin-top: 10px;">
+      <div class="tab-row">
+        <button class="tab-btn active" id="tabRingkasanBtn" onclick="switchTab('ringkasan')">📊 Ringkasan</button>
+        <button class="tab-btn" id="tabTimerBtn" onclick="switchTab('timer')">⏱️ Mulai Istirahat</button>
+      </div>
+    </div>
+
+    <!-- App Content Wrapper -->
+    <div class="app-content" style="padding-top: 8px;">
+      
+      <!-- Tab 1: Ringkasan Istirahat (Screen 6 style) -->
+      <div id="sectionRingkasan" class="tab-content-panel active">
+        
+        <!-- Large Stats Card (Screen 6 style) -->
+        <div class="hero-card" style="margin-bottom: 16px; background: linear-gradient(135deg, #a7f3d0 0%, #10b981 100%); box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);">
+          <div class="hero-card-content">
+            <div class="hero-card-text">
+              <h3 id="totalIstirahat">0 jam 0 menit</h3>
+              <p>Total Istirahat Hari Ini</p>
+            </div>
+            <div class="hero-card-illustration">😴</div>
+          </div>
+          <div class="hero-card-bg">💤</div>
+        </div>
+
+        <!-- Riwayat Istirahat List (Screen 6 style) -->
+        <div class="section-card" style="margin-bottom: 16px;">
+          <div class="section-title-row">
+            <h3 class="section-title">Riwayat Istirahat</h3>
+            <span class="section-subtitle">Hari Ini</span>
+          </div>
+          <div id="riwayatIstirahat" class="interactive-list" style="max-height: 200px; overflow-y: auto;">
+            <!-- Rendered by JS -->
+            <p class="empty-state">Belum ada riwayat istirahat hari ini.</p>
+          </div>
+        </div>
+
+        <!-- Tips Card (Screen 6 bottom style) -->
+        <div class="tip-banner" style="margin-bottom: 16px;">
+          <span class="tip-icon">💡</span>
+          <div class="tip-text">
+            <strong>Tips:</strong> Istirahat yang cukup membantu tubuh ibu pulih lebih optimal dan menyeimbangkan hormon menyusui.
+          </div>
+        </div>
+
+        <button class="btn-primary btn-full" onclick="switchTab('timer')">
+          + Mulai Istirahat
+        </button>
+      </div>
+
+      <!-- Tab 2: Catatan Sesi Istirahat / Timer (Screen 7 style) -->
+      <div id="sectionTimer" class="tab-content-panel hidden">
+        <div id="alertBox" class="alert hidden" style="margin-bottom: 12px;"></div>
+
+        <!-- Timer Card -->
+        <div class="section-card timer-container" style="margin-bottom: 16px;">
+          
+          <!-- Cute sleep illustration (Screen 7 center style) -->
+          <div class="auth-illustration" style="font-size: 72px; margin: 10px 0;">🛌</div>
+
+          <!-- Timer Display -->
+          <div class="timer-circle-wrap" style="background: #ecfdf5; border-color: #a7f3d0;">
+            <span class="timer-text" id="timerDisplay" style="color: #10b981;">00:00:00</span>
+            <span class="timer-sub">Waktu Istirahat</span>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="timer-actions">
+            <button class="btn-primary" id="btnStart" style="background: linear-gradient(135deg, #34d399 0%, #10b981 100%); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);">Mulai</button>
+            <button class="btn-secondary" id="btnStop" disabled>Selesai</button>
+            <button class="btn-outline" id="btnReset">Reset</button>
+          </div>
+        </div>
+
+        <!-- Manual Input Form -->
+        <div class="section-card">
+          <h3 class="section-title" style="margin-bottom: 12px;">Catat Manual</h3>
+          <form id="istirahatForm">
+            <div class="form-group">
+              <label class="form-label">Durasi (Menit)</label>
+              <input type="number" id="durasiManual" class="form-input" min="1" placeholder="Contoh: 120" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tanggal</label>
+              <input type="date" id="tanggalManual" class="form-input" required />
+            </div>
+            <button type="submit" class="btn-outline btn-full" style="margin-top: 8px;">Simpan Istirahat Manual</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (5 Icons Style) -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item-btn">
+        <span class="nav-item-icon">🏠</span>
+        <span class="nav-item-label">Beranda</span>
+      </a>
+      <a href="kondisi.html" class="nav-item-btn">
+        <span class="nav-item-icon">🩺</span>
+        <span class="nav-item-label">Kondisi</span>
+      </a>
+      <a href="menyusui.html" class="nav-item-btn">
+        <span class="nav-item-icon">🤱</span>
+        <span class="nav-item-label">Menyusui</span>
+      </a>
+      <a href="istirahat.html" class="nav-item-btn active">
+        <span class="nav-item-icon">😴</span>
+        <span class="nav-item-label">Istirahat</span>
+      </a>
+      <a href="bahaya.html" class="nav-item-btn">
+        <span class="nav-item-icon">⚠️</span>
+        <span class="nav-item-label">Bahaya</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    // Tab switching for Ringkasan (Screen 6) and Timer (Screen 7)
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('sectionRingkasan').classList.add('hidden');
+      document.getElementById('sectionTimer').classList.add('hidden');
+      
+      if (tab === 'ringkasan') {
+        document.getElementById('tabRingkasanBtn').classList.add('active');
+        document.getElementById('sectionRingkasan').classList.remove('hidden');
+        document.getElementById('headerTitle').textContent = 'Istirahat';
+      } else {
+        document.getElementById('tabTimerBtn').classList.add('active');
+        document.getElementById('sectionTimer').classList.remove('hidden');
+        document.getElementById('headerTitle').textContent = 'Mulai Istirahat';
+      }
+    }
+  </script>
+  <script src="js/api.js"></script>
+  <script src="js/istirahat.js"></script>
+</body>
+</html>

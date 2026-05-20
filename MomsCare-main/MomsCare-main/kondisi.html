@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomCare – Kondisi Diri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="phone-frame">
+    <!-- Header (Screen 2 style) -->
+    <header class="app-header">
+      <button class="header-back-btn" onclick="window.location.href='dashboard.html'">&lt;</button>
+      <span class="header-title-text" id="headerTitle">Pemantauan Kondisi Diri</span>
+      <button class="header-icon-btn" onclick="window.location.href='profil.html'">👤</button>
+    </header>
+
+    <!-- Tab switcher (Combine Screen 2 & Screen 3) -->
+    <div style="padding: 0 20px; margin-top: 10px;">
+      <div class="tab-row">
+        <button class="tab-btn active" id="tabCatatBtn" onclick="switchTab('catat')">📝 Catat Kondisi</button>
+        <button class="tab-btn" id="tabRiwayatBtn" onclick="switchTab('riwayat')">📊 Riwayat</button>
+      </div>
+    </div>
+
+    <!-- App Content Wrapper -->
+    <div class="app-content" style="padding-top: 8px;">
+      
+      <!-- Tab 1: Catat Kondisi Form (Screen 2 style) -->
+      <div id="sectionCatat" class="tab-content-panel active">
+        <div id="alertBox" class="alert hidden" style="margin-bottom: 12px;"></div>
+        
+        <form id="kondisiForm">
+          <div class="form-group">
+            <label class="form-label">Tanggal Pemantauan</label>
+            <input type="date" id="tanggal" class="form-input" required />
+          </div>
+
+          <!-- Nyeri Selector -->
+          <div class="form-group">
+            <label class="form-label">Bagaimana kondisi nyeri Ibu hari ini?</label>
+            <select id="nyeri" class="form-select" required>
+              <option value="ringan">🟢 Ringan (Tidak terlalu mengganggu)</option>
+              <option value="sedang">🟡 Sedang (Mulai terasa nyeri/ngilu)</option>
+              <option value="berat">🔴 Berat (Nyeri hebat, butuh obat)</option>
+            </select>
+          </div>
+
+          <!-- Perdarahan Selector -->
+          <div class="form-group">
+            <label class="form-label">Perdarahan (Lochia)</label>
+            <select id="perdarahan" class="form-select" required>
+              <option value="normal">🟢 Normal (Sedikit/sedang kemerahan)</option>
+              <option value="tidak_ada">🟡 Tidak ada / Sangat sedikit</option>
+              <option value="banyak">🔴 Banyak (Ganti pembalut &lt; 1 jam)</option>
+            </select>
+          </div>
+
+          <!-- Suhu Tubuh Input -->
+          <div class="form-group">
+            <label class="form-label">Suhu Tubuh (°C)</label>
+            <input type="number" id="suhu" class="form-input" step="0.1" min="30" max="45" placeholder="Contoh: 36.7" required />
+          </div>
+
+          <!-- Kondisi Luka Selector -->
+          <div class="form-group">
+            <label class="form-label">Kondisi Luka (Jahitan/Operasi)</label>
+            <select id="kondisiLuka" class="form-select" required>
+              <option value="baik">🟢 Baik (Mulai mengering/normal)</option>
+              <option value="bengkak">🟡 Bengkak / Kemerahan</option>
+              <option value="bernanah">🔴 Basah / Bernanah / Nyeri berat</option>
+            </select>
+          </div>
+
+          <!-- Kondisi Emosional Selector -->
+          <div class="form-group">
+            <label class="form-label">Kondisi Emosional</label>
+            <select id="emosional" class="form-select" required>
+              <option value="baik">🟢 Tenang / Senang (Baik)</option>
+              <option value="cemas">🟡 Cemas / Gelisah</option>
+              <option value="sedih">🟡 Sedih / Mudah menangis</option>
+              <option value="depresi">🔴 Depresi berat / Sangat murung</option>
+            </select>
+          </div>
+
+          <!-- Catatan Tambahan -->
+          <div class="form-group">
+            <label class="form-label">Catatan Tambahan</label>
+            <textarea id="catatan" class="form-textarea" rows="2" placeholder="Tulis keluhan atau catatan khusus jika ada..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary btn-full" id="btnSimpan" style="margin-top: 10px;">
+            Simpan Catatan
+          </button>
+        </form>
+      </div>
+
+      <!-- Tab 2: Riwayat Kondisi (Screen 3 style) -->
+      <div id="sectionRiwayat" class="tab-content-panel hidden">
+        
+        <!-- Interactive Chart Visualizer -->
+        <div class="section-card" style="margin-bottom: 16px;">
+          <h3 class="section-title">Ringkasan Minggu Ini</h3>
+          
+          <div class="chart-container" id="chartContainer">
+            <!-- Simulated chart bars rendered dynamically -->
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height: 90px;"></div>
+              <span class="chart-label">Sen</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height: 60px;"></div>
+              <span class="chart-label">Sel</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height: 100px;"></div>
+              <span class="chart-label">Rab</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height: 80px;"></div>
+              <span class="chart-label">Kam</span>
+            </div>
+            <div class="chart-bar-wrap">
+              <div class="chart-bar" style="height: 40px;"></div>
+              <span class="chart-label">Jum</span>
+            </div>
+          </div>
+          
+          <div class="chart-legend">
+            <div class="legend-item"><span class="legend-color" style="background:var(--pink-primary);"></span><span>Baik</span></div>
+            <div class="legend-item"><span class="legend-color" style="background:var(--peach-primary);"></span><span>Cukup</span></div>
+            <div class="legend-item"><span class="legend-color" style="background:var(--red-danger);"></span><span>Kurang</span></div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <h3 class="section-title" style="margin-bottom: 12px;">Riwayat Harian</h3>
+          <div id="riwayatKondisi" class="interactive-list">
+            <!-- Rendered by JS -->
+            <p class="empty-state">Belum ada riwayat tercatat.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (5 Icons Style) -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item-btn">
+        <span class="nav-item-icon">🏠</span>
+        <span class="nav-item-label">Beranda</span>
+      </a>
+      <a href="kondisi.html" class="nav-item-btn active">
+        <span class="nav-item-icon">🩺</span>
+        <span class="nav-item-label">Kondisi</span>
+      </a>
+      <a href="menyusui.html" class="nav-item-btn">
+        <span class="nav-item-icon">🤱</span>
+        <span class="nav-item-label">Menyusui</span>
+      </a>
+      <a href="istirahat.html" class="nav-item-btn">
+        <span class="nav-item-icon">😴</span>
+        <span class="nav-item-label">Istirahat</span>
+      </a>
+      <a href="bahaya.html" class="nav-item-btn">
+        <span class="nav-item-icon">⚠️</span>
+        <span class="nav-item-label">Bahaya</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    // Local Page Helper for tab switching
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('sectionCatat').classList.add('hidden');
+      document.getElementById('sectionRiwayat').classList.add('hidden');
+      
+      if (tab === 'catat') {
+        document.getElementById('tabCatatBtn').classList.add('active');
+        document.getElementById('sectionCatat').classList.remove('hidden');
+        document.getElementById('headerTitle').textContent = 'Pemantauan Kondisi Diri';
+      } else {
+        document.getElementById('tabRiwayatBtn').classList.add('active');
+        document.getElementById('sectionRiwayat').classList.remove('hidden');
+        document.getElementById('headerTitle').textContent = 'Riwayat Kondisi';
+      }
+    }
+  </script>
+  <script src="js/api.js"></script>
+  <script src="js/kondisi.js"></script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomCare – Tanda Bahaya Nifas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="phone-frame">
+    <!-- Header (Screen 8/9 style) -->
+    <header class="app-header">
+      <button class="header-back-btn" id="btnBackBahaya" onclick="goBackToList()">&lt;</button>
+      <span class="header-title-text" id="headerTitle">Tanda Bahaya Nifas</span>
+      <button class="header-icon-btn" onclick="window.location.href='profil.html'">👤</button>
+    </header>
+
+    <!-- App Content Wrapper -->
+    <div class="app-content" id="bahayaContent">
+      
+      <!-- Panel 1: Daftar Tanda Bahaya (Screen 8 style) -->
+      <div id="panelDaftar" class="tab-content-panel active" style="display:flex; flex-direction:column; gap:16px;">
+        
+        <!-- Danger Banner Alert (Screen 8 top style) -->
+        <div class="alert alert-error" style="display:flex; gap:10px; align-items:flex-start;">
+          <span style="font-size: 20px;">🚨</span>
+          <p style="font-size:12px; line-height:1.5;">
+            <strong>Segera hubungi tenaga kesehatan</strong> jika Anda mengalami salah satu tanda bahaya nifas di bawah ini!
+          </p>
+        </div>
+
+        <div class="interactive-list">
+          
+          <div class="interactive-item" onclick="showDetail('perdarahan')">
+            <div class="item-left">
+              <span class="item-icon">🩸</span>
+              <span class="item-name">Perdarahan berlebihan</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="showDetail('demam')">
+            <div class="item-left">
+              <span class="item-icon">🌡️</span>
+              <span class="item-name">Demam (&ge; 38°C)</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="showDetail('nyeri')">
+            <div class="item-left">
+              <span class="item-icon">⚡</span>
+              <span class="item-name">Nyeri hebat di perut/payudara</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="showDetail('luka')">
+            <div class="item-left">
+              <span class="item-icon">🩹</span>
+              <span class="item-name">Luka operasi bermasalah</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="showDetail('cairan')">
+            <div class="item-left">
+              <span class="item-icon">🤢</span>
+              <span class="item-name">Cairan berbau busuk (lochia)</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="showDetail('emosi')">
+            <div class="item-left">
+              <span class="item-icon">😢</span>
+              <span class="item-name">Gangguan emosional berat</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Panel 2: Detail Tanda Bahaya (Screen 9 style) -->
+      <div id="panelDetail" class="tab-content-panel hidden">
+        
+        <div class="danger-detail-card" id="detailCard">
+          <!-- Rendered dynamically below -->
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (5 Icons Style) -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item-btn">
+        <span class="nav-item-icon">🏠</span>
+        <span class="nav-item-label">Beranda</span>
+      </a>
+      <a href="kondisi.html" class="nav-item-btn">
+        <span class="nav-item-icon">🩺</span>
+        <span class="nav-item-label">Kondisi</span>
+      </a>
+      <a href="menyusui.html" class="nav-item-btn">
+        <span class="nav-item-icon">🤱</span>
+        <span class="nav-item-label">Menyusui</span>
+      </a>
+      <a href="istirahat.html" class="nav-item-btn">
+        <span class="nav-item-icon">😴</span>
+        <span class="nav-item-label">Istirahat</span>
+      </a>
+      <a href="bahaya.html" class="nav-item-btn active">
+        <span class="nav-item-icon">⚠️</span>
+        <span class="nav-item-label">Bahaya</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    const dataBahaya = {
+      perdarahan: {
+        title: 'Perdarahan berlebihan',
+        icon: '🩸',
+        def: 'Perdarahan postpartum primer atau sekunder yang sangat banyak (lochia berwarna merah segar dalam jumlah besar), hingga membasahi pembalut nifas dalam waktu kurang dari 1 jam, atau disertai gumpalan darah berukuran besar.',
+        actions: [
+          'Segera hubungi bidan, dokter, atau rumah sakit terdekat.',
+          'Berbaringlah secara rileks dengan posisi kaki lebih tinggi dari kepala.',
+          'Pastikan asupan cairan (minum air putih) tetap terjaga selama menunggu penanganan.',
+          'Jangan menunda pemeriksaan medis jika perdarahan terus memburuk.'
+        ]
+      },
+      demam: {
+        title: 'Demam tinggi (Suhu \u2265 38\u00B0C)',
+        icon: '🌡️',
+        def: 'Suhu tubuh ibu postpartum mencapai atau melebihi 38 derajat Celcius dalam 24 jam pertama atau beberapa hari setelah melahirkan, yang dapat menjadi indikasi adanya infeksi rahim, saluran kemih, atau payudara (mastitis).',
+        actions: [
+          'Lakukan kompres hangat di dahi dan ketiak.',
+          'Perbanyak minum air putih hangat untuk mencegah dehidrasi.',
+          'Konsultasikan ke dokter untuk mendapatkan resep antibiotik atau penurun panas yang aman bagi ibu menyusui.',
+          'Ganti pakaian dengan bahan katun tipis yang menyerap keringat.'
+        ]
+      },
+      nyeri: {
+        title: 'Nyeri hebat di perut/payudara',
+        icon: '⚡',
+        def: 'Rasa sakit yang teramat sangat pada bagian perut bawah (melebihi kram rahim biasa) atau payudara yang membengkak, kemerahan, terasa panas saat disentuh, yang menjadi tanda tersumbatnya saluran ASI atau mastitis akut.',
+        actions: [
+          'Kompres area yang nyeri dengan kompres hangat atau dingin bergantian.',
+          'Jika nyeri pada payudara, tetap susui bayi sesering mungkin untuk melancarkan ASI.',
+          'Hindari memakai bra kawat atau pakaian yang menekan payudara terlalu kencang.',
+          'Segera periksakan diri jika nyeri disertai menggigil atau demam.'
+        ]
+      },
+      luka: {
+        title: 'Luka operasi bermasalah',
+        icon: '🩹',
+        def: 'Luka jahitan pasca melahirkan normal (perineum) atau operasi sesar (SC) yang terasa sangat nyeri, membengkak, kemerahan, terasa panas, atau mengeluarkan cairan keruh kekuningan/bernanah disertai bau tidak sedap.',
+        actions: [
+          'Jaga kebersihan area luka agar tetap kering setelah dibasuh.',
+          'Gunakan pakaian longgar agar sirkulasi udara di luka terjaga dengan baik.',
+          'Jangan mengoleskan obat herbal atau salep apa pun tanpa anjuran dokter.',
+          'Hubungi tenaga medis segera jika jahitan tampak longgar atau terbuka.'
+        ]
+      },
+      cairan: {
+        title: 'Cairan berbau busuk',
+        icon: '🤢',
+        def: 'Lochia atau cairan nifas yang keluar dari vagina mengeluarkan aroma tidak sedap atau berbau busuk menyengat, yang sering kali mengindikasikan adanya sisa plasenta di dalam rahim atau infeksi bakteri.',
+        actions: [
+          'Ganti pembalut nifas secara teratur setiap 3-4 jam sekali.',
+          'Selalu basuh area kewanitaan dari arah depan ke belakang.',
+          'Jangan gunakan cairan pembersih vagina antiseptik tanpa resep dokter.',
+          'Segera temui dokter kandungan Anda untuk melakukan USG rahim.'
+        ]
+      },
+      emosi: {
+        title: 'Gangguan emosional berat',
+        icon: '😢',
+        def: 'Kondisi kesedihan mendalam yang terus-menerus, kecemasan ekstrem, ketakutan tidak mampu merawat bayi, atau perasaan ingin menyakiti diri sendiri/bayi (indikasi Postpartum Depression atau Postpartum Psychosis).',
+        actions: [
+          'Komunikasikan perasaan cemas/sedih kepada suami atau keluarga terdekat.',
+          'Mintalah bantuan orang lain untuk menjaga bayi sejenak agar Ibu bisa istirahat.',
+          'Hindari memaksakan diri menjadi ibu yang sempurna, mintalah dukungan.',
+          'Konsultasikan ke psikolog atau psikiater sesegera mungkin untuk penanganan psikososial.'
+        ]
+      }
+    };
+
+    function showDetail(key) {
+      const item = dataBahaya[key];
+      if (!item) return;
+
+      document.getElementById('headerTitle').textContent = 'Detail Tanda Bahaya';
+      document.getElementById('btnBackBahaya').style.visibility = 'visible';
+
+      const detailCard = document.getElementById('detailCard');
+      detailCard.innerHTML = `
+        <div class="danger-detail-title">
+          <span>${item.icon}</span> ${item.title}
+        </div>
+        
+        <div class="danger-section-title">Apa yang dimaksud?</div>
+        <p class="danger-desc">${item.def}</p>
+
+        <div class="danger-section-title">Apa yang harus dilakukan?</div>
+        <div style="display:flex; flex-direction:column; gap:6px; margin-bottom: 20px;">
+          ${item.actions.map(act => `
+            <div class="checklist-item">
+              <span class="checklist-icon">✓</span>
+              <span>${act}</span>
+            </div>
+          `).join('')}
+        </div>
+
+        <a href="tel:119" class="btn-primary btn-full" style="background: linear-gradient(135deg, var(--red-danger) 0%, #b91c1c 100%); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);">
+          📞 Hubungi Tenaga Kesehatan
+        </a>
+      `;
+
+      document.getElementById('panelDaftar').classList.add('hidden');
+      document.getElementById('panelDetail').classList.remove('hidden');
+    }
+
+    function goBackToList() {
+      document.getElementById('headerTitle').textContent = 'Tanda Bahaya Nifas';
+      document.getElementById('btnBackBahaya').style.visibility = 'hidden';
+      document.getElementById('panelDaftar').classList.remove('hidden');
+      document.getElementById('panelDetail').classList.add('hidden');
+    }
+
+    // Initialize back button visibility
+    goBackToList();
+  </script>
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

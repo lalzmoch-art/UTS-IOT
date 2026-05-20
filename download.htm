@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ec4899" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <title>MomCare – Masuk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="manifest" href="app.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/icon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="phone-frame">
+    <div class="app-content" style="justify-content: center; padding-bottom: 24px;">
+      
+      <div class="auth-illustration">🌸</div>
+      
+      <div class="auth-brand">
+        <h1>MomCare</h1>
+        <p>Aplikasi Pendamping Masa Nifas Ibu</p>
+      </div>
+
+      <div id="alertBox" class="alert hidden"></div>
+
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label">Alamat Email</label>
+          <input id="email" type="email" class="form-input" placeholder="ibu.sehat@email.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="input-wrap">
+            <input id="password" type="password" class="form-input" placeholder="••••••••" required />
+            <button type="button" class="pwd-toggle" id="togglePwd">👁</button>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn-primary btn-full" id="loginBtn" style="margin-top: 12px;">
+          <span class="btn-text">Masuk</span>
+          <span class="btn-loader hidden">⏳</span>
+        </button>
+      </form>
+
+      <div class="auth-btn-row">
+        <span>Belum punya akun? &nbsp;</span>
+        <a href="register.html" class="link-pink">Daftar Sekarang</a>
+      </div>
+
+      <div class="auth-btn-row" style="margin-top: 14px; border-top: 1px solid var(--gray-light); padding-top: 16px;">
+        <a href="../frontend-admin/index.html" style="color: var(--gray-medium); text-decoration: none; font-weight: 800;">Masuk sebagai Admin &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/supabase-config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/pwa.js"></script>
+</body>
+</html>

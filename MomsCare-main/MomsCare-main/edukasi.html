@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edukasi Tanda Bahaya – MomCare Postpartum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="app-page">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><span class="logo-icon">🌸</span><span class="logo-text">MomCare</span></div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span></a>
+      <a href="kondisi.html" class="nav-item"><span class="nav-icon">💊</span><span class="nav-label">Kondisi Kesehatan</span></a>
+      <a href="menyusui.html" class="nav-item"><span class="nav-icon">🤱</span><span class="nav-label">Menyusui</span></a>
+      <a href="istirahat.html" class="nav-item"><span class="nav-icon">😴</span><span class="nav-label">Istirahat</span></a>
+      <a href="edukasi.html" class="nav-item active"><span class="nav-icon">📚</span><span class="nav-label">Edukasi</span></div>
+      <a href="reminder.html" class="nav-item"><span class="nav-icon">🔔</span><span class="nav-label">Reminder</span></a>
+      <a href="profil.html" class="nav-item"><span class="nav-icon">👤</span><span class="nav-label">Profil</span></a>
+    </nav>
+    <button class="sidebar-logout" id="logoutBtn"><span>🚪</span> Keluar</button>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="hamburger" id="hamburger">☰</button>
+      <div class="topbar-title">Edukasi Tanda Bahaya</div>
+      <div class="topbar-user"><span class="user-avatar">🌸</span><span id="userName">...</span></div>
+    </header>
+    <main class="page-content">
+
+      <div class="edukasi-hero">
+        <h2>⚠️ Kenali Tanda Bahaya Postpartum</h2>
+        <p>Waspadai gejala berikut dan segera hubungi tenaga kesehatan jika mengalaminya.</p>
+      </div>
+
+      <div class="edukasi-grid">
+
+        <div class="edukasi-card danger">
+          <div class="edukasi-icon">🩸</div>
+          <h3>Perdarahan Berlebihan</h3>
+          <p>Perdarahan yang sangat banyak, lebih dari satu pembalut per jam, atau bergumpal besar.</p>
+          <div class="edukasi-action">
+            <strong>Penanganan Awal:</strong> Berbaring, kompres perut bawah, segera ke RS.
+          </div>
+        </div>
+
+        <div class="edukasi-card danger">
+          <div class="edukasi-icon">🌡️</div>
+          <h3>Demam Tinggi</h3>
+          <p>Suhu tubuh ≥38°C lebih dari 24 jam, bisa menandakan infeksi serius.</p>
+          <div class="edukasi-action">
+            <strong>Penanganan Awal:</strong> Kompres hangat, banyak minum air, hubungi bidan/dokter.
+          </div>
+        </div>
+
+        <div class="edukasi-card warning">
+          <div class="edukasi-icon">😣</div>
+          <h3>Nyeri Hebat</h3>
+          <p>Nyeri perut atau panggul yang tidak membaik dengan obat pereda nyeri biasa.</p>
+          <div class="edukasi-action">
+            <strong>Penanganan Awal:</strong> Istirahat, jangan tahan nyeri, konsultasikan ke dokter.
+          </div>
+        </div>
+
+        <div class="edukasi-card danger">
+          <div class="edukasi-icon">🤕</div>
+          <h3>Infeksi Luka</h3>
+          <p>Luka jahitan berbau, bernanah, bengkak kemerahan, atau terasa panas berlebih.</p>
+          <div class="edukasi-action">
+            <strong>Penanganan Awal:</strong> Jaga kebersihan luka, jangan dipijat, ke fasilitas kesehatan.
+          </div>
+        </div>
+
+        <div class="edukasi-card warning">
+          <div class="edukasi-icon">😮‍💨</div>
+          <h3>Sesak Napas</h3>
+          <p>Napas pendek, nyeri dada, atau detak jantung tidak teratur setelah persalinan.</p>
+          <div class="edukasi-action">
+            <strong>Penanganan Awal:</strong> Duduk tegak, tenang, dan segera ke UGD rumah sakit.
+          </div>
+        </div>
+
+        <div class="edukasi-card warning">
+          <div class="edukasi-icon">😰</div>
+          <h3>Gangguan Emosional</h3>
+          <p>Menangis terus-menerus, tidak mau merawat bayi, pikiran menyakiti diri — tanda baby blues atau depresi postpartum.</p>
+          <div class="edukasi-action">
+            <strong>Penanganan Awal:</strong> Ceritakan perasaan, minta dukungan keluarga, konsultasi psikolog.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Kontak Darurat -->
+      <div class="darurat-card">
+        <h3>🆘 Kontak Darurat</h3>
+        <p>Jika kondisi darurat, segera hubungi:</p>
+        <div class="darurat-buttons">
+          <a href="tel:119" class="btn-danger">📞 119 (Emergency)</a>
+          <a href="tel:021-500454" class="btn-danger">🏥 Hotline Kemenkes</a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomCare – Pemantauan Menyusui</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="phone-frame">
+    <!-- Header (Screen 4/5 style) -->
+    <header class="app-header">
+      <button class="header-back-btn" onclick="window.location.href='dashboard.html'">&lt;</button>
+      <span class="header-title-text" id="headerTitle">Catatan Menyusui</span>
+      <button class="header-icon-btn" onclick="window.location.href='profil.html'">👤</button>
+    </header>
+
+    <!-- Tab Switching for Ringkasan (Screen 4) vs Timer/Sesi (Screen 5) -->
+    <div style="padding: 0 20px; margin-top: 10px;">
+      <div class="tab-row">
+        <button class="tab-btn active" id="tabRingkasanBtn" onclick="switchTab('ringkasan')">📊 Ringkasan</button>
+        <button class="tab-btn" id="tabTimerBtn" onclick="switchTab('timer')">⏱️ Sesi Menyusui</button>
+      </div>
+    </div>
+
+    <!-- App Content Wrapper -->
+    <div class="app-content" style="padding-top: 8px;">
+      
+      <!-- Tab 1: Ringkasan & Riwayat (Screen 4 style) -->
+      <div id="sectionRingkasan" class="tab-content-panel active">
+        
+        <!-- Stats Card (Screen 4 style) -->
+        <div class="section-card" style="display:grid; grid-template-columns: 1fr 1fr; gap:16px; text-align:center; margin-bottom:16px;">
+          <div>
+            <h2 id="totalSesiVal" style="font-size:32px; font-weight:800; color:var(--pink-primary);">0</h2>
+            <p style="font-size:12px; color:var(--gray-medium); font-weight:600; margin-top:4px;">Total Sesi Hari Ini</p>
+          </div>
+          <div style="border-left: 1.5px solid var(--gray-light);">
+            <h2 id="totalDurasiVal" style="font-size:24px; font-weight:800; color:var(--pink-primary); line-height:38px;">0 mnt</h2>
+            <p style="font-size:12px; color:var(--gray-medium); font-weight:600; margin-top:4px;">Total Durasi</p>
+          </div>
+        </div>
+
+        <!-- Riwayat Sesi List (Screen 4 style) -->
+        <div class="section-card" style="margin-bottom: 16px;">
+          <div class="section-title-row">
+            <h3 class="section-title">Riwayat Menyusui</h3>
+            <span class="section-subtitle">Hari Ini</span>
+          </div>
+          <div id="riwayatMenyusui" class="interactive-list" style="max-height: 240px; overflow-y: auto;">
+            <!-- Rendered by JS -->
+            <p class="empty-state">Belum ada catatan menyusui hari ini.</p>
+          </div>
+        </div>
+
+        <button class="btn-primary btn-full" onclick="switchTab('timer')">
+          + Mulai Menyusui
+        </button>
+      </div>
+
+      <!-- Tab 2: Sesi Menyusui & Stopwatch (Screen 5 style) -->
+      <div id="sectionTimer" class="tab-content-panel hidden">
+        <div id="alertBox" class="alert hidden" style="margin-bottom: 12px;"></div>
+
+        <div class="section-card timer-container" style="margin-bottom: 16px;">
+          <h4 class="form-label" style="text-align:center; width:100%;">PILIH SISI YANG DISUSUI</h4>
+          
+          <div class="sisi-select-row">
+            <button type="button" class="sisi-card-btn sisi-btn active" data-sisi="kiri" id="sisiKiriBtn">
+              <span class="sisi-icon">👈</span>
+              <span>Kiri</span>
+            </button>
+            <button type="button" class="sisi-card-btn sisi-btn" data-sisi="kanan" id="sisiKananBtn">
+              <span class="sisi-icon">👉</span>
+              <span>Kanan</span>
+            </button>
+          </div>
+
+          <!-- Stopwatch Circle -->
+          <div class="timer-circle-wrap">
+            <span class="timer-text" id="timerDisplay">00:00:00</span>
+            <span class="timer-sub">Durasi Menyusui</span>
+          </div>
+
+          <!-- Actions -->
+          <div class="timer-actions">
+            <button class="btn-primary" id="btnStart">Mulai</button>
+            <button class="btn-secondary" id="btnStop" disabled>Selesai</button>
+            <button class="btn-outline" id="btnReset">Reset</button>
+          </div>
+        </div>
+
+        <!-- Manual Input Form -->
+        <div class="section-card">
+          <h3 class="section-title" style="margin-bottom: 12px;">Catat Manual</h3>
+          <form id="menyusuiForm">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+              <div class="form-group">
+                <label class="form-label">Sisi</label>
+                <select id="sisiManual" class="form-select">
+                  <option value="kiri">Kiri</option>
+                  <option value="kanan">Kanan</option>
+                  <option value="keduanya">Keduanya</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Durasi (Menit)</label>
+                <input type="number" id="durasiManual" class="form-input" min="1" placeholder="10" required />
+              </div>
+            </div>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+              <div class="form-group">
+                <label class="form-label">Waktu Mulai</label>
+                <input type="time" id="waktuManual" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tanggal</label>
+                <input type="date" id="tanggalManual" class="form-input" required />
+              </div>
+            </div>
+
+            <button type="submit" class="btn-outline btn-full" style="margin-top: 8px;">Simpan Sesi Manual</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (5 Icons Style) -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item-btn">
+        <span class="nav-item-icon">🏠</span>
+        <span class="nav-item-label">Beranda</span>
+      </a>
+      <a href="kondisi.html" class="nav-item-btn">
+        <span class="nav-item-icon">🩺</span>
+        <span class="nav-item-label">Kondisi</span>
+      </a>
+      <a href="menyusui.html" class="nav-item-btn active">
+        <span class="nav-item-icon">🤱</span>
+        <span class="nav-item-label">Menyusui</span>
+      </a>
+      <a href="istirahat.html" class="nav-item-btn">
+        <span class="nav-item-icon">😴</span>
+        <span class="nav-item-label">Istirahat</span>
+      </a>
+      <a href="bahaya.html" class="nav-item-btn">
+        <span class="nav-item-icon">⚠️</span>
+        <span class="nav-item-label">Bahaya</span>
+      </a>
+    </nav>
+  </div>
+
+  <script>
+    // Tab switching for Ringkasan (Screen 4) and Timer (Screen 5)
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('sectionRingkasan').classList.add('hidden');
+      document.getElementById('sectionTimer').classList.add('hidden');
+      
+      if (tab === 'ringkasan') {
+        document.getElementById('tabRingkasanBtn').classList.add('active');
+        document.getElementById('sectionRingkasan').classList.remove('hidden');
+        document.getElementById('headerTitle').textContent = 'Catatan Menyusui';
+      } else {
+        document.getElementById('tabTimerBtn').classList.add('active');
+        document.getElementById('sectionTimer').classList.remove('hidden');
+        document.getElementById('headerTitle').textContent = 'Mulai Menyusui';
+      }
+    }
+  </script>
+  <script src="js/api.js"></script>
+  <script src="js/menyusui.js"></script>
+</body>
+</html>

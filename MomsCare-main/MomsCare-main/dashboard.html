@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomCare – Beranda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="phone-frame">
+    <!-- Header (Screen 1 Style) -->
+    <header class="app-header">
+      <div class="header-left">
+        <span class="greet" id="greetText">Selamat datang kembali</span>
+        <span class="title" id="greetName">Halo, Ibu 👋</span>
+      </div>
+      <button class="header-icon-btn" onclick="window.location.href='reminder.html'" title="Notifikasi / Reminder">🔔</button>
+    </header>
+
+    <!-- App Content Wrapper -->
+    <div class="app-content">
+      
+      <!-- Warning Banner (Dynamic) -->
+      <div class="warning-banner hidden" id="warningBanner" style="border-radius: var(--radius-card); padding: 14px; display: flex; gap: 12px; margin-bottom: 4px;">
+        <span class="warn-icon" style="font-size: 20px;">⚠️</span>
+        <div id="warningText" style="font-size: 12px; font-weight: 700; color: var(--red-danger); line-height: 1.4;"></div>
+      </div>
+
+      <!-- Hero Card: Hari Nifas (Screen 1 Style) -->
+      <div class="hero-card">
+        <div class="hero-card-content">
+          <div class="hero-card-text">
+            <h3 id="hariNifasHeader">Hari ke- 12</h3>
+            <p>Masa Nifas</p>
+          </div>
+          <div class="hero-card-illustration">🤱</div>
+        </div>
+        <div class="hero-card-bg">🌸</div>
+      </div>
+
+      <!-- Ringkasan Hari Ini Section (Screen 1 Style) -->
+      <div class="section-card">
+        <h3 class="section-title" style="margin-bottom: 12px;">Ringkasan Hari Ini</h3>
+        <div class="summary-grid">
+          
+          <!-- Kondisi Diri Row -->
+          <div class="summary-row" onclick="window.location.href='kondisi.html'" style="cursor: pointer;">
+            <div class="summary-left">
+              <span class="item-icon">🩺</span>
+              <span class="summary-label">Kondisi diri</span>
+            </div>
+            <div class="summary-value" style="display:flex; align-items:center; gap:6px;">
+              <span id="summaryKondisiVal">Baik</span>
+              <span class="summary-status-badge safe" id="summaryKondisiIcon">✔️</span>
+            </div>
+          </div>
+
+          <!-- Menyusui Row -->
+          <div class="summary-row" onclick="window.location.href='menyusui.html'" style="cursor: pointer;">
+            <div class="summary-left">
+              <span class="item-icon">🤱</span>
+              <span class="summary-label">Menyusui</span>
+            </div>
+            <div class="summary-value" style="display:flex; align-items:center; gap:6px;">
+              <span id="summaryMenyusuiVal">0 kali hari ini</span>
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <!-- Istirahat Row -->
+          <div class="summary-row" onclick="window.location.href='istirahat.html'" style="cursor: pointer;">
+            <div class="summary-left">
+              <span class="item-icon">😴</span>
+              <span class="summary-label">Istirahat</span>
+            </div>
+            <div class="summary-value" style="display:flex; align-items:center; gap:6px;">
+              <span id="summaryIstirahatVal">0 jam 0 menit</span>
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <!-- Tanda Bahaya Row -->
+          <div class="summary-row" onclick="window.location.href='bahaya.html'" style="cursor: pointer;">
+            <div class="summary-left">
+              <span class="item-icon">⚠️</span>
+              <span class="summary-label">Tanda bahaya</span>
+            </div>
+            <div class="summary-value" style="display:flex; align-items:center; gap:6px;">
+              <span id="summaryBahayaVal">Tidak ada</span>
+              <span class="summary-status-badge safe" id="summaryBahayaIcon">✔️</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Advice Banner Tip (Screen 1 Bottom Style) -->
+      <div class="tip-banner">
+        <span class="tip-icon">💕</span>
+        <div class="tip-text">
+          Jangan lupa istirahat ya, Ibu! Istirahat cukup membantu proses pemulihan tubuh Anda.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (5 Icons Style) -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item-btn active">
+        <span class="nav-item-icon">🏠</span>
+        <span class="nav-item-label">Beranda</span>
+      </a>
+      <a href="kondisi.html" class="nav-item-btn">
+        <span class="nav-item-icon">🩺</span>
+        <span class="nav-item-label">Kondisi</span>
+      </a>
+      <a href="menyusui.html" class="nav-item-btn">
+        <span class="nav-item-icon">🤱</span>
+        <span class="nav-item-label">Menyusui</span>
+      </a>
+      <a href="istirahat.html" class="nav-item-btn">
+        <span class="nav-item-icon">😴</span>
+        <span class="nav-item-label">Istirahat</span>
+      </a>
+      <a href="bahaya.html" class="nav-item-btn">
+        <span class="nav-item-icon">⚠️</span>
+        <span class="nav-item-label">Bahaya</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

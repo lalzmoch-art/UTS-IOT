@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomCare – Profil & Pengaturan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="phone-frame">
+    <!-- Header (Screen 10 style) -->
+    <header class="app-header">
+      <button class="header-back-btn" onclick="window.location.href='dashboard.html'">&lt;</button>
+      <span class="header-title-text" style="margin-right:40px;">Profil & Pengaturan</span>
+    </header>
+
+    <!-- App Content Wrapper -->
+    <div class="app-content">
+      
+      <!-- User Profile Header Card (Screen 10 style) -->
+      <div class="profile-card">
+        <span class="profile-avatar-big">👩‍🍼</span>
+        <div class="profile-details">
+          <h3 id="profileNama">Ibu Sehat</h3>
+          <p id="profileEmail">ibu@email.com</p>
+          <span class="days-badge" id="profileHari">Hari ke-12 Masa Nifas</span>
+        </div>
+      </div>
+
+      <!-- Alert Box -->
+      <div id="alertBox" class="alert hidden"></div>
+
+      <!-- Edit Profil Form (Integrates seamlessly) -->
+      <div class="section-card" id="editProfilSection" style="margin-top: 10px;">
+        <h3 class="section-title" style="margin-bottom: 12px;">Edit Profil</h3>
+        <form id="profilForm">
+          <div class="form-group">
+            <label class="form-label">Nama Lengkap</label>
+            <input type="text" id="editNama" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tanggal Melahirkan</label>
+            <input type="date" id="editTanggal" class="form-input" required />
+          </div>
+          <button type="submit" class="btn-primary btn-full" style="margin-top: 8px;">Simpan Perubahan</button>
+        </form>
+      </div>
+
+      <!-- Settings Menu List (Screen 10 menu style) -->
+      <div class="section-card" style="margin-top: 8px;">
+        <div class="interactive-list">
+          
+          <div class="interactive-item" onclick="window.location.href='panduan.html'">
+            <div class="item-left">
+              <span class="item-icon">📖</span>
+              <span class="item-name">Cara Penggunaan Aplikasi</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="window.location.href='reminder.html'">
+            <div class="item-left">
+              <span class="item-icon">🔔</span>
+              <span class="item-name">Pengingat (Reminders)</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="alert('Fitur Pengaturan akun segera hadir.')">
+            <div class="item-left">
+              <span class="item-icon">⚙️</span>
+              <span class="item-name">Pengaturan</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="window.location.href='bahaya.html'">
+            <div class="item-left">
+              <span class="item-icon">❓</span>
+              <span class="item-name">Bantuan & Edukasi</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+          <div class="interactive-item" onclick="alert('MomCare Postpartum v1.0.0. Dibuat dengan cinta untuk pemulihan Ibu.')">
+            <div class="item-left">
+              <span class="item-icon">ℹ️</span>
+              <span class="item-name">Tentang Aplikasi</span>
+            </div>
+            <div class="item-right">
+              <span class="item-arrow">&gt;</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Logout Secondary Button (Screen 10 exit style) -->
+      <button class="btn-secondary btn-full btn-danger" id="logoutBtnMain" style="margin-top: 10px;">
+        Keluar Akun
+      </button>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (5 Icons Style) -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item-btn">
+        <span class="nav-item-icon">🏠</span>
+        <span class="nav-item-label">Beranda</span>
+      </a>
+      <a href="kondisi.html" class="nav-item-btn">
+        <span class="nav-item-icon">🩺</span>
+        <span class="nav-item-label">Kondisi</span>
+      </a>
+      <a href="menyusui.html" class="nav-item-btn">
+        <span class="nav-item-icon">🤱</span>
+        <span class="nav-item-label">Menyusui</span>
+      </a>
+      <a href="istirahat.html" class="nav-item-btn">
+        <span class="nav-item-icon">😴</span>
+        <span class="nav-item-label">Istirahat</span>
+      </a>
+      <a href="bahaya.html" class="nav-item-btn">
+        <span class="nav-item-icon">⚠️</span>
+        <span class="nav-item-label">Bahaya</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/profil.js"></script>
+</body>
+</html>

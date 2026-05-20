@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomCare – Panduan Penggunaan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .guide-step-card {
+      background: var(--white);
+      border-radius: var(--radius-card);
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1.5px solid var(--gray-light);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .guide-step-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--gray-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .guide-step-desc {
+      font-size: 13px;
+      color: var(--gray-medium);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .guide-badge {
+      display: inline-block;
+      background: var(--pink-bg);
+      color: var(--pink-primary);
+      padding: 2px 8px;
+      border-radius: 8px;
+      font-size: 10px;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="phone-frame">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="header-back-btn" onclick="window.location.href='profil.html'">&lt;</button>
+      <span class="header-title-text" style="margin-right:40px;">Tata Cara Penggunaan</span>
+    </header>
+
+    <!-- App Content Wrapper -->
+    <div class="app-content">
+      
+      <div class="tip-banner" style="margin-bottom: 8px;">
+        <span class="tip-icon">📖</span>
+        <div class="tip-text">
+          Selamat datang di panduan aplikasi <strong>MomCare</strong>! Berikut adalah cara mudah melacak dan menjaga kesehatan Anda selama masa nifas.
+        </div>
+      </div>
+
+      <!-- Step 1: Dashboard -->
+      <div class="guide-step-card">
+        <div class="guide-step-title">
+          <span>🏠</span>
+          <span>1. Memantau Beranda</span>
+          <span class="guide-badge">Beranda</span>
+        </div>
+        <p class="guide-step-desc">
+          Pada halaman utama, Anda dapat melihat jumlah hari nifas Anda yang dihitung secara otomatis. Tinjau ringkasan singkat kondisi kesehatan harian, catatan menyusui, dan waktu tidur Anda secara praktis.
+        </p>
+      </div>
+
+      <!-- Step 2: Kondisi Diri -->
+      <div class="guide-step-card">
+        <div class="guide-step-title">
+          <span>🩺</span>
+          <span>2. Mencatat Kondisi Harian</span>
+          <span class="guide-badge">Kondisi</span>
+        </div>
+        <p class="guide-step-desc">
+          Masuk ke menu <strong>Kondisi</strong>, isi formulir mengenai suhu tubuh, rasa nyeri, perdarahan (lochia), serta kondisi luka jahitan. Setelah disimpan, Anda dapat melihat perkembangan kesehatan Anda pada grafik riwayat interaktif.
+        </p>
+      </div>
+
+      <!-- Step 3: Menyusui -->
+      <div class="guide-step-card">
+        <div class="guide-step-title">
+          <span>🤱</span>
+          <span>3. Melacak Sesi Menyusui</span>
+          <span class="guide-badge">Menyusui</span>
+        </div>
+        <p class="guide-step-desc">
+          Pilih menu <strong>Menyusui</strong>, tentukan sisi payudara yang disusui (Kiri/Kanan), lalu gunakan stopwatch internal untuk menghitung durasi menyusui secara presisi. Anda juga dapat mencatat sesi secara manual.
+        </p>
+      </div>
+
+      <!-- Step 4: Istirahat -->
+      <div class="guide-step-card">
+        <div class="guide-step-title">
+          <span>😴</span>
+          <span>4. Mengelola Istirahat</span>
+          <span class="guide-badge">Istirahat</span>
+        </div>
+        <p class="guide-step-desc">
+          Aktifkan timer istirahat di menu <strong>Istirahat</strong> ketika Anda bersiap tidur. Ini membantu Anda memastikan tubuh mendapatkan tidur yang cukup untuk mempercepat penyembuhan rahim dan memicu produksi ASI.
+        </p>
+      </div>
+
+      <!-- Step 5: Tanda Bahaya -->
+      <div class="guide-step-card">
+        <div class="guide-step-title">
+          <span>⚠️</span>
+          <span>5. Edukasi Tanda Bahaya</span>
+          <span class="guide-badge">Bahaya</span>
+        </div>
+        <p class="guide-step-desc">
+          Pelajari 6 gejala bahaya nifas di menu <strong>Bahaya</strong>. Jika salah satu indikator kondisi kesehatan Anda dinilai berbahaya, banner peringatan merah akan muncul di Beranda Anda. Gunakan tombol darurat untuk segera menelepon medis.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (5 Icons Style) -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item-btn">
+        <span class="nav-item-icon">🏠</span>
+        <span class="nav-item-label">Beranda</span>
+      </a>
+      <a href="kondisi.html" class="nav-item-btn">
+        <span class="nav-item-icon">🩺</span>
+        <span class="nav-item-label">Kondisi</span>
+      </a>
+      <a href="menyusui.html" class="nav-item-btn">
+        <span class="nav-item-icon">🤱</span>
+        <span class="nav-item-label">Menyusui</span>
+      </a>
+      <a href="istirahat.html" class="nav-item-btn">
+        <span class="nav-item-icon">😴</span>
+        <span class="nav-item-label">Istirahat</span>
+      </a>
+      <a href="bahaya.html" class="nav-item-btn">
+        <span class="nav-item-icon">⚠️</span>
+        <span class="nav-item-label">Bahaya</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="js/api.js"></script>
+</body>
+</html>

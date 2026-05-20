@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MomCare – Pengingat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* Toggle switch styles for reminders */
+    .reminder-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--gray-light);
+      padding: 14px 16px;
+      border-radius: var(--radius-card);
+      margin-bottom: 10px;
+    }
+    .reminder-item.inactive {
+      opacity: 0.6;
+    }
+    .reminder-toggle {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      margin-right: 12px;
+    }
+    .reminder-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--gray-medium);
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px; width: 18px;
+      left: 3px; bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .toggle-slider {
+      background-color: var(--pink-primary);
+    }
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+    .btn-icon {
+      background: none;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+      transition: transform 0.2s ease;
+    }
+    .btn-icon:hover {
+      transform: scale(1.15);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="phone-frame">
+    <!-- Header -->
+    <header class="app-header">
+      <button class="header-back-btn" onclick="window.location.href='dashboard.html'">&lt;</button>
+      <span class="header-title-text" style="margin-right:40px;">Pengingat</span>
+    </header>
+
+    <!-- App Content Wrapper -->
+    <div class="app-content">
+      
+      <div id="alertBox" class="alert hidden"></div>
+
+      <!-- Add Reminder Card -->
+      <div class="section-card">
+        <h3 class="section-title" style="margin-bottom: 12px;">Tambah Pengingat</h3>
+        <form id="reminderForm">
+          <div class="form-group">
+            <label class="form-label">Jenis Aktivitas</label>
+            <select id="jenisReminder" class="form-select" required>
+              <option value="menyusui">🤱 Menyusui Bayi</option>
+              <option value="obat">💊 Minum Vitamin / Obat</option>
+              <option value="istirahat">😴 Waktu Istirahat Ibu</option>
+              <option value="kontrol">🏥 Jadwal Kontrol Medis</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Waktu Pengingat</label>
+            <input type="time" id="waktuReminder" class="form-input" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Keterangan / Label (Opsional)</label>
+            <input type="text" id="labelReminder" class="form-input" placeholder="Contoh: Tablet tambah darah" />
+          </div>
+          <button type="submit" class="btn-primary btn-full" style="margin-top: 8px;">Tambah Pengingat</button>
+        </form>
+      </div>
+
+      <!-- Reminder List Card -->
+      <div class="section-card">
+        <h3 class="section-title" style="margin-bottom: 12px;">Daftar Pengingat</h3>
+        <div id="reminderList">
+          <!-- Rendered dynamically -->
+          <p class="empty-state">Belum ada pengingat.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (5 Icons Style) -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-item-btn">
+        <span class="nav-item-icon">🏠</span>
+        <span class="nav-item-label">Beranda</span>
+      </a>
+      <a href="kondisi.html" class="nav-item-btn">
+        <span class="nav-item-icon">🩺</span>
+        <span class="nav-item-label">Kondisi</span>
+      </a>
+      <a href="menyusui.html" class="nav-item-btn">
+        <span class="nav-item-icon">🤱</span>
+        <span class="nav-item-label">Menyusui</span>
+      </a>
+      <a href="istirahat.html" class="nav-item-btn">
+        <span class="nav-item-icon">😴</span>
+        <span class="nav-item-label">Istirahat</span>
+      </a>
+      <a href="bahaya.html" class="nav-item-btn">
+        <span class="nav-item-icon">⚠️</span>
+        <span class="nav-item-label">Bahaya</span>
+      </a>
+    </nav>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/reminder.js"></script>
+</body>
+</html>
