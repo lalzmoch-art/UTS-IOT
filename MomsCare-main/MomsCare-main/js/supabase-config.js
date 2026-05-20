@@ -1,3 +1,3 @@
 const supabaseUrl = 'https://kowciilwzeqryccyjehp.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtvd2NpaWx3emVxcnljY3lqZWhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU5Nzg4ODgsImV4cCI6MjAzMTU1NDg4OH0.some_hidden_part' // Tempel kunci ANON lengkapmu di sini
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtvd2NpaWx3emVxcnljY3lqZWhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTU5Nzg4ODgsImV4cCI6MjAzMTU1NDg4OH0.some_hidden_part'
 const supabase = Supabase.createClient(supabaseUrl, supabaseKey)
